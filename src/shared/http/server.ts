@@ -1,10 +1,12 @@
 import 'reflect-metadata';
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
+import { errors } from 'celebrate';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import routes from './routes/router';
 import '../typeorm';
+import AppError from '../errors/AppErrors';
 
 dotenv.config();
 
@@ -14,6 +16,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/api', routes);
+app.use(errors());
 
 app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
   if (err instanceof AppError) {
@@ -25,6 +28,7 @@ app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
   return res.status(500).json({
     error: 'error',
     message: 'Internal Server Error',
+    que: err.message,
   });
 });
 

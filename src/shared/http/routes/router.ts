@@ -1,11 +1,7 @@
-import { Request, Response, Router } from 'express';
+import { Router } from 'express';
+import usersRouter from '../../../modules/users/routes/users.routes';
 
 const routes = Router();
 
-routes.get('/check', (req: Request, res: Response) => {
-  return res.status(200).json({
-    status: 'First route',
-  });
-});
-
+routes.use('/users', usersRouter);
 export default routes;
