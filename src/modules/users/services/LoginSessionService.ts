@@ -16,7 +16,7 @@ interface IResponse {
   token: string;
 }
 
-class LoginUsersService {
+class LoginSessionService {
   public async execute({ email, password }: IRequest): Promise<IResponse> {
     const usersRepository = getCustomRepository(UsersRepository);
 
@@ -40,4 +40,4 @@ class LoginUsersService {
   }
 }
 
-export default LoginUsersService;
+export default LoginSessionService;
