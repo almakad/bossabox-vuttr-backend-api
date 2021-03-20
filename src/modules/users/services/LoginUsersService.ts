@@ -29,7 +29,7 @@ class LoginUsersService {
 
     const secret = auth.jwt.secret;
 
-    const token = sign({}, secret || '', {
+    const token = sign({}, secret, {
       subject: user.id,
       expiresIn: '12h',
     });
