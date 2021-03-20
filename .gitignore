@@ -4,4 +4,4 @@ dist/
 .env.ts
 .idea/
 .vscode/
-.ormconfig
+ormconfig.json
