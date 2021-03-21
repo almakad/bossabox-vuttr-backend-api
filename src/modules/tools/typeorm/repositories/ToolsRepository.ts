@@ -1,10 +1,10 @@
-import { EntityRepository, Repository } from 'typeorm';
+import { EntityRepository, Like, Repository } from 'typeorm';
 import Tool from '../entities/Tool';
 
 @EntityRepository(Tool)
 class ToolsRepository extends Repository<Tool> {
-  async findByTag(tag: string): Promise<Tool | undefined> {
-    const tool = await this.findOne({ where: { tags: tag } });
+  async findByTag(tag: string): Promise<Tool[] | undefined> {
+    const tool = await this.find({ tags: Like(`%${tag}%`) });
     return tool;
   }
   async findByTitle(title: string): Promise<Tool | undefined> {

@@ -17,9 +17,18 @@ class CreateToolsServices {
     if (toolsExist) throw new AppError('Tool title already exists');
     const tag = JSON.stringify(tags);
     const tool = toolRepository.create({ title, link, description, tags: tag });
+    const toolTag = JSON.parse(tool.tags);
     await toolRepository.save(tool);
 
-    return tool;
+    return {
+      id: tool.id,
+      title: tool.title,
+      link: tool.link,
+      description: tool.description,
+      tags: toolTag,
+      created_at: tool.created_at,
+      updated_at: tool.updated_at,
+    };
   }
 }
 
