@@ -7,8 +7,8 @@ class UsersToolsController {
     const { tools_id } = req.params;
     const userToolsService = new UserToolsService();
 
-    const user = await userToolsService.delete({ user_id, tools_id });
-    return res.status(201).json(user);
+    await userToolsService.delete({ user_id, tools_id });
+    return res.status(201).json({ message: 'Tool deleted ' });
   }
 }
 
