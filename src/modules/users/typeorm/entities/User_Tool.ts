@@ -7,12 +7,12 @@ import {
 } from 'typeorm';
 
 @Entity('users_tools')
-class User {
+class UserTool {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column('uuid')
-  user_id: string;
+  UserTool_id: string;
 
   @Column('uuid')
   tools_id: string;
@@ -24,4 +24,4 @@ class User {
   updated_at: Date;
 }
 
-export default User;
+export default UserTool;
