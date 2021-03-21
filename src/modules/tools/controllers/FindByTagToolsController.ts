@@ -7,8 +7,18 @@ class FindByTagToolsController {
     const toolsService = new FindByTagToolsService();
 
     const tool = await toolsService.execute(tag);
-
-    return res.status(200).json(tool);
+    const tools = tool.map(tools => {
+      return {
+        title: tools.title,
+        link: tools.link,
+        description: tools.description,
+        tags: tools.tags,
+        id: tools.id,
+      };
+    });
+    return res.status(200).json({
+      tools,
+    });
   }
 }
 export default FindByTagToolsController;
