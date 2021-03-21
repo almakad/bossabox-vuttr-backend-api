@@ -16,9 +16,7 @@ class FindByTagToolsController {
         id: tools.id,
       };
     });
-    return res.status(200).json({
-      tools,
-    });
+    return res.status(200).json(tools);
   }
 }
 export default FindByTagToolsController;
