@@ -3,6 +3,10 @@ import Tool from '../entities/Tool';
 
 @EntityRepository(Tool)
 class ToolsRepository extends Repository<Tool> {
+  async findById(id: string): Promise<Tool | undefined> {
+    const tool = await this.findOne({ where: { id: id } });
+    return tool;
+  }
   async findByTag(tag: string): Promise<Tool[] | undefined> {
     const tool = await this.find({ tags: Like(`%${tag}%`) });
     return tool;

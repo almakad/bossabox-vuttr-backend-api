@@ -2,7 +2,7 @@ import { Router } from 'express';
 import isAuthenticated from '../../../shared/http/middleware/isAuthenticated';
 import FindAllToolsController from '../controllers/FindAllToolsController';
 import FindByTagToolsController from '../controllers/FindByTagToolsController';
-import ToolsController from '../controllers/ToolsController';
+import ToolsController from '../controllers/CreateToolsController';
 
 const toolsRouter = Router();
 
@@ -15,6 +15,6 @@ toolsRouter.use(isAuthenticated);
 toolsRouter.post('/', toolsController.create);
 
 toolsRouter.get('/', findAllController.search);
-toolsRouter.post('/:tag', findByTaglController.execute);
+toolsRouter.get('/:tag', findByTaglController.execute);
 
 export default toolsRouter;

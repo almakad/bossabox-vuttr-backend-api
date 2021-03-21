@@ -7,7 +7,12 @@ class ToolsController {
 
     const toolsService = new CreateToolsServices();
 
-    const tools = await toolsService.create({ title, link, description, tags });
+    const tools = await toolsService.create(req.user.id, {
+      title,
+      link,
+      description,
+      tags,
+    });
 
     return res.status(201).json(tools);
   }

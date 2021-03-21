@@ -12,7 +12,7 @@ class UserTool {
   id: string;
 
   @Column('uuid')
-  UserTool_id: string;
+  user_id: string;
 
   @Column('uuid')
   tools_id: string;
