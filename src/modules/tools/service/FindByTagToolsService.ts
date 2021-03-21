@@ -3,16 +3,6 @@ import AppError from '../../../shared/errors/AppErrors';
 import Tool from '../typeorm/entities/Tool';
 import ToolsRepository from '../typeorm/repositories/ToolsRepository';
 
-interface IRequest {
-  id: string;
-  title: string;
-  link: string;
-  description: string;
-  tags: string[];
-  created_at: string;
-  updated_at: string;
-}
-
 class FindByTagToolsService {
   async execute(tag: string): Promise<Tool[]> {
     const toolRepository = getCustomRepository(ToolsRepository);
